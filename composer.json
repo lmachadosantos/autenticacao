@@ -1,0 +1,30 @@
+{
+    "name": "lmachadosantos/autenticacao",
+    "description": "Projeto de Autenticação",
+    "type": "project",
+    "require": {
+        "respect/rest": "^0.6.0",
+        "respect/relational": "^0.8.0",
+        "respect/config": "^2.0",
+        "respect/validation": "^0.9.3",
+        "cboden/ratchet": "0.3.*",
+        "respect/template": "^0.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "phpdocumentor/phpdocumentor": "2.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leandro Machado dos Santos",
+            "email": "lmachadosantos@icloud.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+		"psr-4": {
+			"Autenticacao\\": [ "src/", "tests/" ]
+		}
+    }
+}
