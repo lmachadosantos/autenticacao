@@ -6,7 +6,7 @@
         "respect/rest": "^0.6.0",
         "respect/relational": "^0.8.0",
         "respect/config": "^2.0",
-        "respect/validation": "^0.9.3",
+        "respect/validation": "1.0.3",
         "cboden/ratchet": "0.3.*",
         "respect/template": "^0.2.0"
     },

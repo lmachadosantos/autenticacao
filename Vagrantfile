@@ -70,6 +70,8 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y apache2
     sudo apt-get install -y php5
     sudo apt-get install -y php5-mysql
+    sudo apt-get install -y php5-sqlite
+    sudo apt-get install -y sqlite3
     sudo a2enmod rewrite
     cat > /etc/apache2/sites-available/000-default.conf << EOF
 <VirtualHost *:80>
