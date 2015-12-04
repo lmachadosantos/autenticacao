@@ -24,7 +24,9 @@ class UsuarioRepository implements RepositoryInterface
 
     public function obtemLista()
     {
-        return $this->mapper->usuario->fetchAll();
+        $usuarios = $this->mapper->usuario->fetchAll();
+        
+        return $usuarios;
     }
 
     public function loginExiste($login)

@@ -36,4 +36,37 @@ $router->any(BASE_URL . "public/index.php/usuario/*", "\\MentesNotaveis\\Autenti
     }
 ));
 
+$router->any(BASE_URL . "public/index.php/perfil/*", "\\MentesNotaveis\\Autenticacao\\Controllers\\V1\\PerfilController", array(
+    $container->mapper
+))->accept(array(
+    'text/html' => function ($obj) {
+        var_dump($obj);
+    },
+    'application/json' => function ($obj) {
+        echo json_encode($obj);
+    }
+));
+
+$router->any(BASE_URL . "public/index.php/papel/*", "\\MentesNotaveis\\Autenticacao\\Controllers\\V1\\PapelController", array(
+    $container->mapper
+))->accept(array(
+    'text/html' => function ($obj) {
+        var_dump($obj);
+    },
+    'application/json' => function ($obj) {
+        echo json_encode($obj);
+    }
+));
+
+$router->any(BASE_URL . "public/index.php/recurso/*", "\\MentesNotaveis\\Autenticacao\\Controllers\\V1\\RecursoController", array(
+    $container->mapper
+))->accept(array(
+    'text/html' => function ($obj) {
+        var_dump($obj);
+    },
+    'application/json' => function ($obj) {
+        echo json_encode($obj);
+    }
+));
+
 echo $router->run();

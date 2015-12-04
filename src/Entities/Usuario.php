@@ -2,6 +2,7 @@
 namespace MentesNotaveis\Autenticacao\Entities;
 
 use stdClass;
+use Exception;
 use Respect\Validation\Validator;
 
 class Usuario implements EntityInterface
@@ -43,7 +44,7 @@ class Usuario implements EntityInterface
             ->validate($login);
         
         if (! $loginValidador) {
-            throw new \Exception();
+            throw new Exception();
         }
         
         $this->login = $login;
@@ -62,41 +63,28 @@ class Usuario implements EntityInterface
             ->validate($senha);
         
         if (! $senhaValidador) {
-            throw new \Exception();
+            throw new Exception();
         }
         
         $this->senha = md5($senha);
     }
     
-    public function obtemCriadoEm()
+    public function defineAtualizadoEm($atualizadoEm)
     {
-        return $this->criado_em;
+        $atualizadoEmValidador = Validator::date('Y-m-d H:i:s')->validate($atualizadoEm);
+        
+        if(! $atualizadoEmValidador){
+            throw new Exception();
+        }
+        
+        $this->atualizado_em = $atualizadoEm;
     }
     
-    public function obtemAtualizadoEm()
-    {
-        return $this->atualizado_em;
-    }
-    
-    public function defineAtualizadoEm($atualizado_em)
-    {
-        $this->atualizado_em = $atualizado_em;
-    }
-    
-    public function obtemAtivo()
-    {
-        return $this->ativo;
-    }
-
     public function obtemCopia()
     {
         $usuario = new stdClass();
         $usuario->id = $this->obtemId();
         $usuario->login = $this->obtemLogin();
-        $usuario->senha = $this->obtemSenha();
-        $usuario->criado_em = $this->obtemCriadoEm();
-        $usuario->atualizado_em = $this->obtemAtualizadoEm();
-        $usuario->ativo = $this->obtemAtivo();
         
         return $usuario;
     }

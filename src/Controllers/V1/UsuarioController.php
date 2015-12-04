@@ -76,7 +76,7 @@ class UsuarioController implements Routable
     public function put($id)
     {
         parse_str(file_get_contents('php://input'), $_REQUEST);
-                
+        
         $id = (int) $id;
         $senha = (! empty($_REQUEST['senha'])) ? $_REQUEST['senha'] : null;
         
@@ -90,8 +90,6 @@ class UsuarioController implements Routable
         if ($usuario) {
             $usuario->defineSenha($senha);
             $usuario->defineAtualizadoEm(date('Y-m-d H:i:s'));
-            
-            var_dump($usuario); die();
             
             $this->mapper->usuario->persist($usuario);
             $this->mapper->flush();
