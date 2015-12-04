@@ -18,14 +18,14 @@ switch (APPLICATION_ENVIRONMENT) {
 
 require_once (APPLICATION_PATH . '/vendor/autoload.php');
 
-$container = \Autenticacao\Container::obtemInstancia();
+$container = \MentesNotaveis\Autenticacao\Container::obtemInstancia();
 
 $mapper = $container->mapper;
-$mapper->entityNamespace = '\\Autenticacao\\Entities\\';
+$mapper->entityNamespace = '\\MentesNotaveis\\Autenticacao\\Entities\\';
 
 $router = $container->router;
 
-$router->any(BASE_URL . "public/index.php/usuario/*", "\\Autenticacao\\Controllers\\V1\\UsuarioController", array(
+$router->any(BASE_URL . "public/index.php/usuario/*", "\\MentesNotaveis\\Autenticacao\\Controllers\\V1\\UsuarioController", array(
     $container->mapper
 ))->accept(array(
     'text/html' => function ($obj) {

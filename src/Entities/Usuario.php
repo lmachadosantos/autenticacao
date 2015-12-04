@@ -1,8 +1,8 @@
 <?php
-namespace Autenticacao\Entities;
+namespace MentesNotaveis\Autenticacao\Entities;
 
+use stdClass;
 use Respect\Validation\Validator;
-use Respect\Validation\Exceptions\ValidationException;
 
 class Usuario implements EntityInterface
 {
@@ -13,8 +13,17 @@ class Usuario implements EntityInterface
 
     protected $senha;
 
+    protected $criado_em;
+
+    protected $atualizado_em;
+
+    protected $ativo;
+
     public function __construct()
-    {}
+    {
+        $this->criado_em = date('Y-d-m H:i:s');
+        $this->ativo = true;
+    }
 
     public function obtemId()
     {
@@ -28,10 +37,12 @@ class Usuario implements EntityInterface
 
     public function defineLogin($login)
     {
-        if (! Validator::stringType()->notEmpty()
+        $loginValidador = Validator::stringType()->notEmpty()
             ->noWhitespace()
             ->length(8, 14)
-            ->validate($login)) {
+            ->validate($login);
+        
+        if (! $loginValidador) {
             throw new \Exception();
         }
         
@@ -44,16 +55,49 @@ class Usuario implements EntityInterface
     }
 
     public function defineSenha($senha)
-    {
+    {        
         $senhaValidador = Validator::alnum()->notEmpty()
             ->noWhitespace()
-            ->length(4, 8);
+            ->length(4, 8)
+            ->validate($senha);
         
-        try {
-            $senhaValidador->check($senha);
-            $this->senha = $senha;
-        } catch (ValidationException $exception) {
-            print_r($exception->getMainMessage());
+        if (! $senhaValidador) {
+            throw new \Exception();
         }
+        
+        $this->senha = md5($senha);
+    }
+    
+    public function obtemCriadoEm()
+    {
+        return $this->criado_em;
+    }
+    
+    public function obtemAtualizadoEm()
+    {
+        return $this->atualizado_em;
+    }
+    
+    public function defineAtualizadoEm($atualizado_em)
+    {
+        $this->atualizado_em = $atualizado_em;
+    }
+    
+    public function obtemAtivo()
+    {
+        return $this->ativo;
+    }
+
+    public function obtemCopia()
+    {
+        $usuario = new stdClass();
+        $usuario->id = $this->obtemId();
+        $usuario->login = $this->obtemLogin();
+        $usuario->senha = $this->obtemSenha();
+        $usuario->criado_em = $this->obtemCriadoEm();
+        $usuario->atualizado_em = $this->obtemAtualizadoEm();
+        $usuario->ativo = $this->obtemAtivo();
+        
+        return $usuario;
     }
 }

@@ -1,7 +1,7 @@
 <?php 
-namespace Autenticacao\Entities;
+namespace MentesNotaveis\Autenticacao\Entities;
 
 interface EntityInterface
 {
-    
+    public function obtemCopia();
 }

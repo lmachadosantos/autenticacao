@@ -1,5 +1,5 @@
 <?php
-namespace Autenticacao\Controllers\V1;
+namespace MentesNotaveis\Autenticacao\Controllers\V1;
 
 use Respect\Rest\Routable;
 use Respect\Relational\Mapper;

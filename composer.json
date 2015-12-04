@@ -24,7 +24,7 @@
     "minimum-stability": "stable",
     "autoload": {
 		"psr-4": {
-			"Autenticacao\\": [ "src/", "tests/" ]
+			"MentesNotaveis\\Autenticacao\\": [ "src/", "tests/" ]
 		}
     }
 }

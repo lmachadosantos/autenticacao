@@ -40,8 +40,8 @@ return array(
     'React\\EventLoop\\' => array($vendorDir . '/react/event-loop'),
     'Ratchet\\' => array($vendorDir . '/cboden/ratchet/src/Ratchet'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'MentesNotaveis\\Autenticacao\\' => array($baseDir . '/src', $baseDir . '/tests'),
     'JsonSchema\\' => array($vendorDir . '/justinrainbow/json-schema/src/JsonSchema'),
     'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
-    'Autenticacao\\' => array($baseDir . '/src', $baseDir . '/tests'),
 );

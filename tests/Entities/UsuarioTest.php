@@ -1,6 +1,6 @@
 <?php
 
-namespace Autenticacao\Entities;
+namespace MentesNotaveis\Autenticacao\Entities;
 
 class UsuarioTest extends \PHPUnit_Framework_TestCase
 {

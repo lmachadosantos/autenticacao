@@ -1,5 +1,5 @@
 <?php
-namespace Autenticacao;
+namespace MentesNotaveis\Autenticacao;
 
 class Container
 {
